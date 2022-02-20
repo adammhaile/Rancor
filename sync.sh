@@ -1,0 +1,1 @@
+rsync -avz --exclude 'www' --exclude 'firmware' --exclude 'gcodes' dsf@rancor:/opt/dsf/sd/ ./sd/
