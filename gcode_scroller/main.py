@@ -3,10 +3,8 @@ from pathlib import Path
 from subprocess import Popen
 import shlex
 import os
-from colored import fg, bg, attr
 
-fgc = fg(166)
-reset = attr('reset')
+fgc = '\x1b[1;166}'
 
 def run():
     cmd = '/opt/dsf/bin/CodeLogger'
