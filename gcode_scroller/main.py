@@ -22,8 +22,10 @@ def run():
         i = line.find(':')
         if i >= 0 and len(line) > i+3:
             # remove last 3 because 'executed' prints ' =>' at end
-            line = line[i+2:len(line)-3]
-        print(f'{fgc}{line}{reset}')
+            line = line[i+2:]
+            if line.endswith(' =>'):
+                line = line[:len(line)-3]
+        print(f'{fgc}{line}')
         
     stdout, _ = process.communicate()
     line = stdout.decode('ascii')
