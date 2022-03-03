@@ -1,3 +1,1 @@
-;M800
-;echo "{param.F}"
-M118 P0 S{param.F}
+M118 P5 S{param.F}
