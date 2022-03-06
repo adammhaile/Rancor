@@ -1,0 +1,12 @@
+espeak:
+  caps: 20
+  pitch: 10
+  speed: 120
+  voice: english-us
+phrases:
+  filament_runout:
+  - I've got 99 problems and having filament ain't one
+  greeting:
+  - I am [[R'eINk'o@r]]. Robotic Automated NP Complete Object Replicator. Would you
+    like to print a thing?
+  - I am [[R'eINk'o@r]]. Would you like to print a thing?
