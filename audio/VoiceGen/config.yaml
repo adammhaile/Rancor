@@ -4,9 +4,37 @@ espeak:
   speed: 120
   voice: english-us
 phrases:
+  cancel:
+  - Canceling. That was a shitty print anyways
+  - Canceling. Maybe next time you won't screw up
+  - Canceling. That print was so derivative
+  complete:
+  - The print is ready for you sir
+  filament_load:
+  - Om nom nom nom. Yummy
+  - Gimme that sweet sweet plastic
+  - This better not be that 3.0 millimeter shit
+  - Oh man, that's the stuff
   filament_runout:
   - I've got 99 problems and having filament ain't one
+  - Hello! I'm running on empty over here!
+  - It would appear you forgot to feed me, you filthy monkey!
+  filament_unload:
+  - Ejecting filament. That stuff tastes horrible
   greeting:
   - I am [[R'eINk'o@r]]. Robotic Automated NP Complete Object Replicator. Would you
     like to print a thing?
   - I am [[R'eINk'o@r]]. Would you like to print a thing?
+  heaterfault:
+  - Fire in the disco. Fire in the Taco Bell. I might be on fire
+  layer:
+  - Changing layer!
+  - Up we go again!
+  - Taking it to a whole new level
+  pause:
+  - Ugh, I was tired anyways
+  - Let's take a break
+  - Pausing. Just gonna stretch my legs for a bit
+  toolchange:
+  - This tool sucks, let's use the other one
+  - Changing tool
