@@ -5,3 +5,6 @@
 ; Wait for set temperatures to be reached
 M116 P1
 
+G91
+G1 U-10 F6000
+G90
