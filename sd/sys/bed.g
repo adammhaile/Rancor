@@ -3,7 +3,7 @@ M561                ; clear any existing bed transform
 T0                  ;always probe with T0
 
 G91
-G1 Z5 F6000
+G1 Z5 F{global.speed_z}
 G90
 
 G30 P0 X20  Y32.5  Z-99999
