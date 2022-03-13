@@ -1,13 +1,6 @@
-G29 S2
+;tfree1.g
 
-;Drop the bed
-G91
-G1 Z5 F6000
-G90
-
-G53 G1 X-84 F6000
+G53 G1 X-84 F6000 ; park the tool
 
 ;fan off
-M106 P2 S0
-
-G29 S1
+M106 P1 S0

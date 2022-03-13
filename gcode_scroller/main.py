@@ -3,6 +3,7 @@ from pathlib import Path
 from subprocess import Popen
 import shlex
 import os
+import sys
 
 fgc = '\x1b[1;166}'
 
@@ -26,6 +27,7 @@ def run():
                 line = line[i+2:]
                 if line.endswith(' =>'):
                     line = line[:len(line)-3]
+                line = line[:30]
             print(f'{fgc}{line}')
         except:
             pass
@@ -35,4 +37,9 @@ def run():
 
 
 if __name__ == '__main__':
-    run()
+    keep_running = True
+    while keep_running:
+        try:
+            run()
+        except KeyboardInterrupt:
+            keep_running = False

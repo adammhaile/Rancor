@@ -54,7 +54,7 @@ M574 Y1 S1 P"0.io3.in+1.io3.in"                               ; Y has dual motor
 
 ; Z-Probe
 M558 P5 C"^0.io5.in" H2.5 F250 T6000                            ; set Z probe type to switch and the dive height + speeds
-G31 P500 X0 Y0 Z0.1                                   ; set Z probe trigger value, offset and trigger height
+G31 P500 X0 Y0 Z1.2                                   ; set Z probe trigger value, offset and trigger height
 M557 X15:315 Y20:300 S75:70                                    ; define mesh grid
 
 ; Heaters
@@ -99,11 +99,11 @@ G10 P0 R0 S0                                                ; set initial tool 0
 
 ; Right
 M563 P1 S"Right" D1 X3 H2 F3                                   ; define tool 1
-G10 P1 X0 Y-20.6 Z0                                             ; set tool 1 axis offsets
+G10 P1 X-0.2 Y-20.1 Z0.55                                             ; set tool 1 axis offsets
 G10 P1 R0 S0                                                ; set initial tool 1 active and standby temperatures to 0C
 
 ; Custom settings are not defined
 
 ; Miscellaneous
-T0                                                          ; select first tool
+T0 P0                                                         ; select first tool
 
