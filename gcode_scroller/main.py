@@ -29,6 +29,8 @@ def run():
                     line = line[:len(line)-3]
                 line = line[:30]
             print(f'{fgc}{line}')
+        except KeyboardInterrupt:
+            sys.exit()
         except:
             pass
         
@@ -37,9 +39,8 @@ def run():
 
 
 if __name__ == '__main__':
-    keep_running = True
-    while keep_running:
+    while True:
         try:
             run()
         except KeyboardInterrupt:
-            keep_running = False
+            sys.exit()
