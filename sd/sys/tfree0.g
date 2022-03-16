@@ -1,4 +1,4 @@
-;tfree1.g
+;tfree0.g
 
 G91
 G1 Z{global.zclearance} F{global.speed_z}

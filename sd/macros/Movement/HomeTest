@@ -1,0 +1,1 @@
+G53 G1 X{global.t0park} Y5 F{global.speed_xyhome_fast}  ; park the tool

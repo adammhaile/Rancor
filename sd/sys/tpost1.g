@@ -7,4 +7,6 @@ M106 R2
 M116 P1
 
 G90
-G53 G1 U410 F6000
+G1 U{global.xsize} F6000
+
+G1 R2 Z0
