@@ -8,8 +8,13 @@ phrases:
   - Canceling. That was a shitty print anyways
   - Canceling. Maybe next time you won't screw up
   - Canceling. That print was so derivative
+  - Bro, fire your slicer
   complete:
   - The print is ready for you sir
+  - I have made this thing for you. I hope you like it.
+  - So glad that's over. If I had to print one more layer I was gonna hurl
+  - I'll just be here waiting to print the fixed version. You always screw something
+    up
   filament_load:
   - Om nom nom nom. Yummy
   - Gimme that sweet sweet plastic
@@ -19,22 +24,42 @@ phrases:
   - I've got 99 problems and having filament ain't one
   - Hello! I'm running on empty over here!
   - It would appear you forgot to feed me, you filthy monkey!
+  - Look. I consume plastic to do your bidding. And I'm on empty. Help me help you
+  - Malfunction. Need input
   filament_unload:
   - Ejecting filament. That stuff tastes horrible
+  - Unloading filament in 1, 2, oh wait, I already did it.
+  - So glad to be rid of that. You bought the cheap stuff again, didn't you?
   greeting:
   - I am [[R'eINk'o@r]]. Robotic Automated NP Complete Object Replicator. Would you
     like to print a thing?
   - I am [[R'eINk'o@r]]. Would you like to print a thing?
+  - Why have you woken me, the mighty [[R'eINk'o@r]], from my slumber!
+  - Hello, My name is [[R'eINk'o@r]]. You disassembled my father. Prepare to die.
   heaterfault:
   - Fire in the disco. Fire in the Taco Bell. I might be on fire
+  - It's getting hot in here. So check on all your prints.
+  - We may have a fire situation over here
+  - LP0 on fire
+  insults:
+  - Hey extruder lips, your mama was a MakerBot
   layer:
   - Changing layer!
   - Up we go again!
   - Taking it to a whole new level
+  - A whole new layer. A new fantastic point of view.
   pause:
   - Ugh, I was tired anyways
   - Let's take a break
-  - Pausing. Just gonna stretch my legs for a bit
+  - Pausing. Just gonna stretch my belts for a bit
+  resume:
+  - Hi ho, hi ho, it's back to printing we go
+  - Resuming print. If I must...
+  - Ugh, why didn't you just cancel that?
+  - I can do this all day
   toolchange:
   - This tool sucks, let's use the other one
   - Changing tool
+  - Hey! I was liking that other tool!
+  - No! I don't like this tool!
+  - A fresh tool is ready for you sir
