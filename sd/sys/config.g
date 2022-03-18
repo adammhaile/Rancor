@@ -102,7 +102,7 @@ G10 P0 R0 S0                                                ; set initial tool 0
 
 ; Right
 M563 P1 S"Right" D1 X3 H2 F3                                   ; define tool 1
-G10 P1 X-0.2 Y-20.1 Z0.35                                            ; set tool 1 axis offsets
+G10 P1 U-0.3 Y-20.6 Z0.35                                            ; set tool 1 axis offsets
 G10 P1 R0 S0                                                ; set initial tool 1 active and standby temperatures to 0C
 
 ; extra sensors

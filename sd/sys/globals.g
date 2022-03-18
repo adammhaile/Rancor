@@ -13,6 +13,7 @@ global y_seek=500
 global zclearance=3
 global t0park=-84
 global t1park=449
+global ypark=340
 
 ;speeds
 global speed_xy=6000
