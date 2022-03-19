@@ -1,0 +1,1 @@
+set global.t1tool = "v6_b"

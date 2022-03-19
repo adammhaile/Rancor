@@ -97,17 +97,25 @@ M106 P3 S0 H-1                                               ; set fan 3 value. 
 ; Tools
 ; Left
 M563 P0 S"Left" D0 X0 H1 F1                                    ; define tool 0
-G10 P0 X-71.5 Y-20.6 Z0                                             ; set tool 0 axis offsets
-G10 P0 R0 S0                                                ; set initial tool 0 active and standby temperatures to 0C
+; G10 P0 X-71.5 Y-20.6 Z0                                        ; set tool 0 axis offsets
+G10 P0 X0 Y0 Z0
+G10 P0 R0 S0                                                   ; set initial tool 0 active and standby temperatures to 0C
 
 ; Right
 M563 P1 S"Right" D1 X3 H2 F3                                   ; define tool 1
-G10 P1 U-0.3 Y-20.6 Z0.35                                            ; set tool 1 axis offsets
-G10 P1 R0 S0                                                ; set initial tool 1 active and standby temperatures to 0C
+; G10 P1 U-0.3 Y-20.6 Z0.35                                      ; set tool 1 axis offsets
+G10 P1 U0 Y0 Z0
+G10 P1 R0 S0                                                   ; set initial tool 1 active and standby temperatures to 0C
 
 ; extra sensors
 M308 S10 Y"mcu-temp" A"MCU"                           ; defines sensor 10 as MCU temperature sensor
 
-; Miscellaneous
-T0 P0                                                         ; select first tool
+; set base tool names
+M98 P"tools/t0.g" 
+M98 P"tools/t1.g"
 
+; load variable tool configs
+M98 P"tools/setup.g"
+
+; Ensure T0 loaded
+M98 P"soft_load_tool.g" S0

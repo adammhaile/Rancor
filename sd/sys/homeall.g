@@ -1,6 +1,8 @@
 ; homeall.g
 
-T0 P0
+M98 P"soft_load_tool.g" S0 ;ensure T0 selected
+
+set global.cur_tool = {global.t0tool} ;force because tpost0 doesn't run
 
 G91                                 ; relative positioning
 G1 H2 Z{global.zclearance} F{global.speed_xy}     ; lift Z relative to current position
