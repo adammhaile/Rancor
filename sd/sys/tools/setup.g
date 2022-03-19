@@ -10,7 +10,7 @@ var z0 = {global.offset_probe_z + global.t0_z + global.offset_bed}
 G10 P0 X{var.x0} Y{var.y0} Z{var.z0}
 
 ; setup T1 offsets
-set var.x0 = {global.offset_probe_x + global.t1_x}
+set var.x0 = {global.t1_x} ; T1 doesn't need a probe offset for X
 set var.y0 = {global.offset_probe_y + global.t1_y}
 set var.z0 = {global.offset_probe_z + global.t1_z + global.offset_bed}
 

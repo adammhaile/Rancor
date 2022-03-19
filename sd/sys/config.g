@@ -71,14 +71,14 @@ M143 H0 S120                                                ; set temperature li
 ; Left
 M308 S1 P"0.temp1" Y"thermistor" T100000 B4725 C7.06e-8       ; configure sensor 1 as thermistor on pin temp1
 M950 H1 C"0.out1" T1                                          ; create nozzle heater output on out1 and map it to sensor 1
-M307 H1 R2.616 K0.237:0.348 D5.69 E1.35 S1.00 B0 V23.9      ; disable bang-bang mode for heater  and set PWM limit
-M143 H1 S285                                                ; set temperature limit for heater 1 to 280C
+; M307 H1 R2.616 K0.237:0.348 D5.69 E1.35 S1.00 B0 V23.9      ; disable bang-bang mode for heater  and set PWM limit
+; M143 H1 S285                                                ; set temperature limit for heater 1 to 280C
 
 ; Right
 M308 S2 P"1.temp0" Y"thermistor" T100000 B4725 C7.06e-8     ; configure sensor 2 as thermistor on pin 1.temp0
 M950 H2 C"1.out0" T2                                        ; create nozzle heater output on 1.out0 and map it to sensor 2
-M307 H1 R2.616 K0.237:0.348 D5.69 E1.35 S1.00 B0 V23.9      ; disable bang-bang mode for heater  and set PWM limit
-M143 H2 S285                                                ; set temperature limit for heater 2 to 280C
+; M307 H1 R2.616 K0.237:0.348 D5.69 E1.35 S1.00 B0 V23.9      ; disable bang-bang mode for heater  and set PWM limit
+; M143 H2 S285                                                ; set temperature limit for heater 2 to 280C
 
 ; Fans
 ; left HEF

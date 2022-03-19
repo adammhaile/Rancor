@@ -1,10 +1,10 @@
 M291 P"Please wait for temperature to be reached" R"Filament Load" T5
 M116
 M291 P"Loading and purging filament..." R"Filament Load" T5
-M308                ; Relative Extruder Moves
+M83                 ; Relative Extruder Moves
 G92 E0              ; set extruder to 0
 
-if {param.S} == 0
+if {state.currentTool} == 0
     M98 P{"tools/" ^ global.t0tool ^ "/load.g"}
 else
     M98 P{"tools/" ^ global.t1tool ^ "/load.g"}
