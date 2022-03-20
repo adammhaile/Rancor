@@ -36,7 +36,7 @@ class VoiceGen:
 
     def __export_cmd(self, phrase, path, name):
         base_cmd = self.__speak_cmd(phrase)
-        base_cmd += f' --stdout | ffmpeg -i - -ar 44100 -ac 2 -ab 64k -f mp3 {path}/{name}.mp3'
+        base_cmd += f' --stdout | ffmpeg -i - -ar 44100 -ac 1 -ab 64k -f mp3 {path}/{name}.mp3'
         return base_cmd
 
     def __cache_write(self, phrase):
