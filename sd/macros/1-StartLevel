@@ -1,12 +1,13 @@
+M291 P"Homing for startup level..."
 M140 S60 ; heat bed to 60
 G28 ;Home the Machine
-M117 "Waiting for bed temp..."
+M291 P"Waiting for bed temp..."
 M190 S60 ; wait to reach temp
-M117 "True Level: 1 of 2"
+M291 P"True Level: 1 of 2"
 G32
-M117 "True Level: 2 of 2"
+M291 P"True Level: 2 of 2"
 G32
-M117 "Mesh Level"
+M291 P"Mesh Level"
 G29
 G29 S1 P"heightmap.csv"
-M117 "Leveling Complete!"
+M291 P"Leveling Complete!"

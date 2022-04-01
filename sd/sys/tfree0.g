@@ -7,3 +7,5 @@ G53 G1 X{global.t0park} F{global.speed_xy} ; park the tool
 M106 P1 S0
 
 set global.cur_tool = "default"
+
+M800 F"toolchange"

@@ -20,6 +20,9 @@ M950 P0 C"0.out9" Q4000
 ; Wait a moment for the CAN expansion boards to start
 G4 S2
 
+; speak greeting
+M800 F"greeting"
+
 ; Drives
 M569 P0.0 S0                                                ; Left Y
 M569 P0.1 S1                                                ; Left X
@@ -34,9 +37,9 @@ M569 P1.2 S0                                                ; Right Extruder
 M584 X0.1 U1.1 Y0.0:1.0 Z0.3:0.4:0.5 E0.2:1.2               ; set drive mapping
 M350 X16 U16 Y16 Z16 E16:16 I1                              ; configure microstepping with interpolation
 M92  X160 U160 Y160 Z1600 E397:397                          ; set steps per mm
-M566 X200 U200 Y200 Z100 E1500:1500                         ; set maximum instantaneous speed changes (mm/min)
+M566 X400 U400 Y400 Z100 E1500:1500                         ; set maximum instantaneous speed changes (mm/min)
 M203 X10800 U10800 Y10800 Z900 E3600:3600                   ; set maximum speeds (mm/min)
-M201 X250 U250 Y250 Z100 E1500                             	; set accelerations (mm/s^2)
+M201 X500 U500 Y500 Z100 E1500                             	; set accelerations (mm/s^2)
 M906 X1400 U1400 Y1400 Z1200 E1100:1100 I75                 ; set motor currents (mA) and motor idle factor in per cent
 ;M84 S30                                                    ; Set idle timeout
 
@@ -101,11 +104,15 @@ M563 P0 S"Left" D0 X0 H1 F1                                    ; define tool 0
 G10 P0 X0 Y0 Z0
 G10 P0 R0 S0                                                   ; set initial tool 0 active and standby temperatures to 0C
 
+M591 D0 P1 C"0.io4.in" S1
+
 ; Right
 M563 P1 S"Right" D1 X3 H2 F3                                   ; define tool 1
 ; G10 P1 U-0.3 Y-20.6 Z0.35                                      ; set tool 1 axis offsets
 G10 P1 U0 Y0 Z0
 G10 P1 R0 S0                                                   ; set initial tool 1 active and standby temperatures to 0C
+
+; M591 D1 P3 C"1.io4.in" S0 R10:200 L24.8 E50.0
 
 ; extra sensors
 M308 S10 Y"mcu-temp" A"MCU"                           ; defines sensor 10 as MCU temperature sensor

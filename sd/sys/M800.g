@@ -1,1 +1,2 @@
-M118 P5 S{param.F}
+var file = "*" ^ {param.F}
+M118 P5 S{var.file}

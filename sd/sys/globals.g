@@ -30,7 +30,7 @@ global t1park = 449
 global ypark = 340
 
 ;speeds
-global speed_xy = 6000
+global speed_xy = 8000
 global speed_xyhome_fast = 1800
 global speed_xyhome_slow = 360
 global speed_z = 3000
