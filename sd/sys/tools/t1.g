@@ -1,1 +1,1 @@
-set global.t1tool = "v6_b"
+set global.t1tool = "revo_b_0.4"
