@@ -1,3 +1,6 @@
+;flags
+global allow_filament_sensor = false
+
 ;base values
 global offset_probe_x = -71.5
 global offset_probe_y = -20.6

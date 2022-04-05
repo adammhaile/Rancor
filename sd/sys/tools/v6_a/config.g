@@ -8,7 +8,7 @@ else
     set global.t1_y = 0
     set global.t1_z = 0.35
     
-; set header config
+; set heater config
 ; S+1 because heater numbering is offset from tool number
 M307 H{param.S+1} R2.616 K0.237:0.348 D5.69 E1.35 S1.00 B0 V23.9
 M143 H{param.S+1} S285

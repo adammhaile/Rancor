@@ -8,3 +8,6 @@ G90
 
 M98 P"full_park.g"
 
+; disable filament sense in case of filament change
+M591 D0 S0
+M591 D1 S0

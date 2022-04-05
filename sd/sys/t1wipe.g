@@ -1,10 +1,12 @@
-var do_purge={heat.heaters[tools[1].heaters[0]].current > 170}
+var heater = heat.heaters[tools[1].heaters[0]]
+var do_purge={var.heater.active >= 170}
 
 G90
 G53 G1 X{global.t1wipe_max} F{global.speed_xy}
 
 ;wait for heatup
-M116 P1
+if {var.heater.current < var.heater.active}
+    M116 P1
 
 if {var.do_purge}
 	G92 E0
