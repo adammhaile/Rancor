@@ -5,14 +5,14 @@
 #define DC_One A0
 #define DC_Two A1
 
-//globals
-int freq_amp;
+//audio vars
 int FreqL[7];
 int FreqR[7];
+
 int SumL = 0;
 int SumR = 0;
-int minv = 2048;
-int maxv = -2048;
+
+bool mono_audio = true;
 
 // audio clamp values
 #define MIN_LEVEL 60
@@ -26,15 +26,30 @@ int maxv = -2048;
 #define CLOCK_PIN SPI_CLOCK
 CRGB leds[NUM_LEDS];
 
-int led_r_start = (NUM_LEDS / 2);
-int led_l_start = led_r_start - 1;
+uint8_t led_r_start = (NUM_LEDS / 2);
+uint8_t led_l_start = led_r_start - 1;
+
+uint8_t last_anim = 1;
+uint8_t cur_anim = 1;
+
+#define ANIM_AUDIO 0
+#define ANIM_LARSON_RED 1
+
+unsigned long last_frame = 0;
+#define FRAME_TIME 5
+
+unsigned long last_audio = 0;
+#define AUDIO_COOLDOWN 1000
+CRGB AudioColor(215,95,0);
+
+int step = 0;
 
 
 /********************Setup Loop*************************/
 void setup()
 {
-    FastLED.addLeds<SK9822, DATA_PIN, CLOCK_PIN, BGR>(leds, NUM_LEDS);
-    FastLED.setBrightness(32);
+    FastLED.addLeds<SK9822, DATA_PIN, CLOCK_PIN, BGR>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
+    FastLED.setBrightness(64);
     
     // Set spectrum Shield pin configurations
     pinMode(STROBE, OUTPUT);
@@ -47,44 +62,62 @@ void setup()
     digitalWrite(RESET, LOW);
     delay(5);
 
-    Serial.begin(115200);
-    while (!Serial) { delay(1); }
+    Serial.begin(57600);
+    // while (!Serial) { delay(1); }
+    
+    set_anim(ANIM_LARSON_RED);
 }
 
-void fadeall() { for(int i = 0; i < NUM_LEDS; i++) { leds[i].nscale8(250); } }
+void FetchAudio()
+{
+    digitalWrite(RESET, HIGH);
+    delayMicroseconds(200);
+    digitalWrite(RESET, LOW);
+    delayMicroseconds(200);
 
-void do_led() { 
-	static uint8_t hue = 0;
-	Serial.print("x");
-	// First slide the led in one direction
-	for(int i = 0; i < NUM_LEDS; i++) {
-		// Set the i'th led to red 
-		leds[i] = CHSV(hue++, 255, 255);
-		// Show the leds
-		FastLED.show(); 
-		// now that we've shown the leds, reset the i'th led to black
-		// leds[i] = CRGB::Black;
-		fadeall();
-		// Wait a little bit before we loop around and do it again
-		delay(10);
-	}
-	Serial.print("x");
+    static int freq_amp = 0;
+    for (freq_amp = 0; freq_amp < 7; freq_amp++)
+    {
+        digitalWrite(STROBE, HIGH);
+        delayMicroseconds(50);
+        digitalWrite(STROBE, LOW);
+        delayMicroseconds(50);
 
-	// Now go in the other direction.  
-	for(int i = (NUM_LEDS)-1; i >= 0; i--) {
-		// Set the i'th led to red 
-		leds[i] = CHSV(hue++, 255, 255);
-		// Show the leds
-		FastLED.show();
-		// now that we've shown the leds, reset the i'th led to black
-		// leds[i] = CRGB::Black;
-		fadeall();
-		// Wait a little bit before we loop around and do it again
-		delay(10);
-	}
+        FreqL[freq_amp] = analogRead(DC_One);
+        FreqR[freq_amp] = analogRead(DC_Two);
+    }
+    
+    static int i = 0;
+    SumL = SumR = 0;
+    for (i = 0; i < 7; i++)
+    {
+        SumL += FreqL[i];
+        SumR += FreqR[i];
+    }
+    
+    SumL /= 7;
+    SumR /= 7;
+    
+    SumL = map(SumL, MIN_LEVEL, MAX_LEVEL, OUT_MIN, OUT_MAX);
+    SumL = constrain(SumL, OUT_MIN, OUT_MAX);
+    SumR = map(SumR, MIN_LEVEL, MAX_LEVEL, OUT_MIN, OUT_MAX);
+    SumR = constrain(SumR, OUT_MIN, OUT_MAX);
+    
+    if(mono_audio)
+    {
+        SumR = SumL;
+    }
 }
 
-void do_led_audio()
+void set(uint8_t i, CRGB color)
+{
+    if(i >= 0 && i < NUM_LEDS)
+    {
+        leds[i] = color;
+    }
+}
+
+void anim_audio()
 {
     static int x = 0;
     static int c = 0;
@@ -96,7 +129,7 @@ void do_led_audio()
     {
         if(SumL > c)
         {
-            leds[x] = CRGB(255, 0, 0);
+            leds[x] = AudioColor;
         }
         else
         {
@@ -110,7 +143,7 @@ void do_led_audio()
     {
         if(SumR > c)
         {
-            leds[x] = CRGB(255, 0, 0);
+            leds[x] = AudioColor;
         }
         else
         {
@@ -122,66 +155,96 @@ void do_led_audio()
     FastLED.show();
 }
 
+uint8_t larson_tail = 5;
+int8_t  larson_dir = -1;
+uint8_t larson_fade = 256 / (larson_tail + 2);
+uint8_t larson_divider = 6;
+uint8_t larson_sub_step = 0;
+
+void set_anim(uint8_t i)
+{
+    step = 0;
+    cur_anim = i;
+    last_anim = i;
+    larson_dir = -1;
+}
+
+void anim_larson(CRGB color, bool rainbow=false)
+{
+    static uint8_t i = 0;
+    static int anim_step = 0;
+    static uint8_t fade_val = 0;
+    static uint8_t hue = 0;
+    
+    anim_step = step / larson_divider;
+    
+    if(rainbow)
+    {
+        hue = map(anim_step, 0, NUM_LEDS-1, 0, 255);
+        hue = (hue + larson_sub_step) % 255;
+        hsv2rgb_rainbow(CHSV(hue, 255, 255), color);
+    }
+    
+    set(anim_step, color);
+    
+    for(i=1; i<=larson_tail; i++)
+    {
+        fade_val = 255 - (larson_fade * i);
+        set(anim_step-i, color.nscale8(fade_val));
+        set(anim_step+i, color.nscale8(fade_val));
+    }
+
+    step += larson_dir;
+    
+    if(anim_step >= NUM_LEDS && larson_dir == 1)
+    {
+        anim_step = (NUM_LEDS-1) * larson_divider;
+        larson_dir = -1;
+    }
+    else if(anim_step <= 0 && larson_dir == -1)
+    {
+        step = 0;
+        larson_dir = 1;
+        larson_sub_step += 5;
+    }
+}
+
 void loop()
 {
-    ReadAudio();
-    SumChannels();
-    do_led_audio();
-}
-
-void ReadAudio()
-{
-    digitalWrite(RESET, HIGH);
-    delayMicroseconds(200);
-    digitalWrite(RESET, LOW);
-    delayMicroseconds(200);
-
-    for (freq_amp = 0; freq_amp < 7; freq_amp++)
+    FetchAudio();
+    
+    if(SumL > 0 || SumR > 0)
     {
-        digitalWrite(STROBE, HIGH);
-        delayMicroseconds(50);
-        digitalWrite(STROBE, LOW);
-        delayMicroseconds(50);
-
-        FreqL[freq_amp] = analogRead(DC_One);
-        FreqR[freq_amp] = analogRead(DC_Two);
+        last_audio = millis();
+    }
+    
+    if(millis() - last_audio < AUDIO_COOLDOWN)
+    {
+        cur_anim = ANIM_AUDIO;
+    }
+    else if(cur_anim == ANIM_AUDIO)
+    {
+        set_anim(last_anim);
+    }
+    
+    if(millis() - last_frame > FRAME_TIME)
+    {
+        last_frame = millis();
+        FastLED.clear();
+        switch(cur_anim)
+        {
+            case ANIM_LARSON_RED:
+                // anim_larson(CRGB(255, 0, 0));
+                anim_larson(AudioColor);
+                //anim_larson(CRGB(), true);
+                break;
+            default:
+                anim_audio();
+                break;
+        }
+        
+        // leds[0] = CRGB(0, 255, 0);
+        FastLED.show();
     }
 }
 
-void MapClamp()
-{
-    SumL = map(SumL, MIN_LEVEL, MAX_LEVEL, OUT_MIN, OUT_MAX);
-    SumL = constrain(SumL, OUT_MIN, OUT_MAX);
-    SumR = map(SumR, MIN_LEVEL, MAX_LEVEL, OUT_MIN, OUT_MAX);
-    SumR = constrain(SumR, OUT_MIN, OUT_MAX);
-}
-
-void SumChannels()
-{
-    static int i = 0;
-    SumL = SumR = 0;
-    for (i = 0; i < 7; i++)
-    {
-        SumL += FreqL[i];
-        SumR += FreqR[i];
-    }
-    
-    SumL /= 7;
-    SumR /= 7;
-    
-    MapClamp();
-    
-    // if(SumL < minv) minv = SumL;
-    // if(SumL > maxv) maxv = SumL;
-    // if(SumR < minv) minv = SumR;
-    // if(SumR > maxv) maxv = SumR;
-    
-    Serial.print(SumL);
-    Serial.print(",");
-    Serial.print(SumR*-1);
-    // Serial.print(",");
-    // Serial.print(minv);
-    // Serial.print(",");
-    // Serial.print(maxv);
-    Serial.println();
-}
