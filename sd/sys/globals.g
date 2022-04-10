@@ -18,7 +18,7 @@ global t1tool = {global.cur_tool}
 ;size setup
 global xsize = 330
 global ysize = 320
-global zsize = 600
+global zsize = 605
 
 global xcenter = {global.xsize/2}
 global ycenter = {global.ysize/2}
@@ -45,12 +45,11 @@ global t0_x=0
 global t0_y=0
 global t0_z=0
 
-global t0purge_x = -54
-global t0purge_y = 275
+global t0wipe_max = -10
+global t0wipe_min = -24
+
 global t0purge_amt = 12
 global t0purge_speed = 300
-global t0wipe_max = -38
-global t0wipe_min = -48
 global t0retract_amt = 0
 global t0retract_speed = 2400
 
@@ -59,9 +58,10 @@ global t1_x=0
 global t1_y=0
 global t1_z=0
 
-global t1purge_amt = 12
-global t1purge_speed = 300
 global t1wipe_max = 408
 global t1wipe_min = 422
+
+global t1purge_amt = 12
+global t1purge_speed = 300
 global t1retract_amt = 0
 global t1retract_speed = 2400

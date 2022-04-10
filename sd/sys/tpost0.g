@@ -7,6 +7,7 @@ M98 P"t0wipe.g"
 G1 R2 Z0
 
 set global.cur_tool = global.t0tool
+
 M703
 
 if {global.allow_filament_sensor}

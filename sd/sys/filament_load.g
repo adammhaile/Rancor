@@ -1,5 +1,10 @@
-M291 P"Please wait for temperature to be reached" R"Filament Load" T15
-M116 P{state.currentTool}
+var active = heat.heaters[tools[state.currentTool].heaters[0]].active
+var current = heat.heaters[tools[state.currentTool].heaters[0]].current
+
+if {var.current < var.active}
+    M291 P"Please wait for temperature to be reached" R"Filament Load" T15
+    M116 P{state.currentTool}
+
 M291 S2 P"Press OK to continue loading" R"Filament Load"
 M291 P"Loading and purging filament..." R"Filament Load" T15
 M83                 ; Relative Extruder Moves

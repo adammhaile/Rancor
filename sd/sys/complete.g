@@ -4,3 +4,5 @@ G10 P1 S0 R0 ; turn off T1
 M140 S0; turn off bed
 M591 D0 S0
 M591 D1 S0
+
+set global.allow_filament_sensor = false

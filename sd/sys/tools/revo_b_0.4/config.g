@@ -3,10 +3,18 @@ if {param.S} == 0
     set global.t0_x = 0
     set global.t0_y = 0
     set global.t0_z = 0
+    set global.t0purge_amt = 12
+    set global.t0purge_speed = 300
+    set global.t0retract_amt = 0
+    set global.t0retract_speed = 2400
 else
-    set global.t1_x = 0
-    set global.t1_y = 0
-    set global.t1_z = 0.4
+    set global.t1_x = -0.8
+    set global.t1_y = 0.1
+    set global.t1_z = 0.44
+    set global.t1purge_amt = 12
+    set global.t1purge_speed = 300
+    set global.t1retract_amt = 0
+    set global.t1retract_speed = 2400
     
 ; set heater config
 ; S+1 because heater numbering is offset from tool number

@@ -54,7 +54,7 @@ M671 X-13.7:343.8:343.8 Y160:287.5:32.5 S7.5
 ; TODO - these are wild guesses at this point for X
 ; will need to change mins to negatives
 M208 S1 X-85 U0 Y0 Z-2                                            ; set axis minima
-M208 S0 X405 U450 Y345 Z600                                      ; set axis maxima
+M208 S0 X405 U450 Y345 Z{global.zsize}                            ; set axis maxima
 
 ; Endstops
 M574 X1 S1 P"0.io2.in"                                        ; X homes low end

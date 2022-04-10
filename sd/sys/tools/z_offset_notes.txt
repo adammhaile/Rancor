@@ -1,0 +1,2 @@
+If Z is too far away, make Z offset value LARGER
+If Z is too close, make Z offset value SMALLER
