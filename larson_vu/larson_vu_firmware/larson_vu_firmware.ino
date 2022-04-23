@@ -75,10 +75,10 @@ int SumR = 0;
 bool mono_audio = true;
 
 // audio clamp values
-#define MIN_LEVEL 60
-#define MAX_LEVEL 600
+#define MIN_LEVEL 100
+#define MAX_LEVEL 350
 #define OUT_MIN 0
-#define OUT_MAX 14
+#define OUT_MAX 20
 
 // LED stuff
 #define NUM_LEDS 40
@@ -114,7 +114,7 @@ void setup()
     serial_input = "";
 
     FastLED.addLeds<SK9822, DATA_PIN, CLOCK_PIN, BGR>(leds, NUM_LEDS).setCorrection(TypicalLEDStrip);
-    FastLED.setBrightness(64);
+    FastLED.setBrightness(192);
 
     // Set spectrum Shield pin configurations
     pinMode(STROBE, OUTPUT);
@@ -220,7 +220,7 @@ void anim_audio()
     FastLED.show();
 }
 
-uint8_t larson_tail = 5;
+uint8_t larson_tail = 15;
 int8_t larson_dir = -1;
 uint8_t larson_fade = 256 / (larson_tail + 2);
 uint8_t larson_divider = 6;
@@ -281,6 +281,8 @@ void do_update_anim()
     {
         if (char(serial_input[1]) >= 49 && char(serial_input[1]) <= 57)
         {
+            Serial.print("A");
+            Serial.println(serial_input[1]);
             set_anim(char(serial_input[1]) - 48);
             writeConfig();
         }
@@ -294,7 +296,7 @@ void do_update_mode()
         if (char(serial_input[1]) >= 48 && char(serial_input[1]) <= 51)
         {
             config.mode = char(serial_input[1]) - 48;
-            Serial.print("Mode: ");
+            Serial.print("M");
             Serial.println(config.mode);
             writeConfig();
         }
