@@ -385,7 +385,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "larson_vu_pcb.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""

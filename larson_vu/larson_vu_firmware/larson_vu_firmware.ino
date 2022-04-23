@@ -81,7 +81,7 @@ bool mono_audio = true;
 #define OUT_MAX 14
 
 // LED stuff
-#define NUM_LEDS 30
+#define NUM_LEDS 40
 #define DATA_PIN SPI_DATA
 #define CLOCK_PIN SPI_CLOCK
 CRGB leds[NUM_LEDS];
@@ -104,11 +104,12 @@ String serial_input;
 /********************Setup Loop*************************/
 void setup()
 {
-    if (EEPROM.read(0) != CONFIGCHECK)
-    {
-        EEPROM.write(0, CONFIGCHECK);
-        writeDefaultConfig();
-    }
+    // if (EEPROM.read(0) != CONFIGCHECK)
+    // {
+    //     EEPROM.write(0, CONFIGCHECK);
+    //     writeDefaultConfig();
+    // }
+    readConfig();
 
     serial_input = "";
 
@@ -129,7 +130,7 @@ void setup()
     Serial.begin(57600);
     // while (!Serial) { delay(1); }
 
-    set_anim(ANIM_LARSON_RED);
+    set_anim(config.cur_anim);
 }
 
 void FetchAudio()
