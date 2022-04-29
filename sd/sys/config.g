@@ -11,6 +11,9 @@ G90                                                         ; send absolute coor
 M83                                                         ; ...but relative extruder moves
 M550 P"Rancor"                                              ; set printer name
 
+; Larson VU Serial Config
+M575 P1 B57600 S2                                           ; Setup UART on IO_0 to 57600 baud
+
 ; Audio Player Serial Config
 M575 P2 B57600 S2                                           ; Setup UART on IO_1 to 57600 baud
 

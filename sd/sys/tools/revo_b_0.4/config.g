@@ -10,7 +10,7 @@ if {param.S} == 0
 else
     set global.t1_x = -0.8
     set global.t1_y = 0.1
-    set global.t1_z = 0.44
+    set global.t1_z = 0.24
     set global.t1purge_amt = 12
     set global.t1purge_speed = 300
     set global.t1retract_amt = 0
