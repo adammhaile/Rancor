@@ -1,7 +1,7 @@
 var active = heat.heaters[tools[1].heaters[0]].active
 var current = heat.heaters[tools[1].heaters[0]].current
 var do_purge={var.active >= 170}
-
+set var.do_purge=false
 G90
 G53 G1 X{global.t1wipe_max} F{global.speed_xy}
 
