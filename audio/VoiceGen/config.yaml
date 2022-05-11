@@ -42,7 +42,7 @@ phrases:
   - It's getting hot in here. So check on all your prints.
   - We may have a fire situation over here
   - LP0 on fire
-  insults:
+  insult:
   - Hey extruder lips, your mama was a MakerBot
   - Do you even extrude, bro?
   - Hey! Are you just gonna walk on by with out checking me out?
@@ -60,6 +60,13 @@ phrases:
   - Come over here and I'll show you what 60 liters of pure printing volume can really
     do
   - Why are you looking at me like I've got two heads?
+  - Your printer is so cheap, even MicroCenter won't sell it
+  - Your printer bed is so warped, it only prints bananas
+  - Your printer volume is so small, it can't even print a calibration cube
+  - your mother was a MakerBot and your father smelt of ABS!
+  - To call your printer an Ender 3, would be an insult to Ender 3s
+  - Your printer is what the french call, les incompetents
+  - Your printer is a bigger fire hazard than the A-Net A8
   layer:
   - Changing layer!
   - Up we go again!
@@ -74,6 +81,11 @@ phrases:
   - Resuming print. If I must...
   - Ugh, why didn't you just cancel that?
   - I can do this all day
+  start:
+  - Oh no. Not again. Not another helmet you'll never wear!
+  - Are you ever going to print something useful on me for once?
+  - Ugh, not this shit again. I told you last time I don't want to print things like
+    this
   toolchange:
   - This tool sucks, let's use the other one
   - Changing tool
