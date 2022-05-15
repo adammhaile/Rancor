@@ -42,7 +42,7 @@ phrases:
   - It's getting hot in here. So check on all your prints.
   - We may have a fire situation over here
   - LP0 on fire
-  insult:
+  layer:
   - Hey extruder lips, your mama was a MakerBot
   - Do you even extrude, bro?
   - Hey! Are you just gonna walk on by with out checking me out?
@@ -67,11 +67,6 @@ phrases:
   - To call your printer an Ender 3, would be an insult to Ender 3s
   - Your printer is what the french call, les incompetents
   - Your printer is a bigger fire hazard than the A-Net A8
-  layer:
-  - Changing layer!
-  - Up we go again!
-  - Taking it to a whole new level
-  - A whole new layer. A new fantastic point of view.
   pause:
   - Ugh, I was tired anyways
   - Let's take a break
