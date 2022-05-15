@@ -1,3 +1,4 @@
+; CHT 1.4mm Nozzle
 ; set base tool offsets
 if {param.S} == 0
     set global.t0_x = 0

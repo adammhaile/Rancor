@@ -1,0 +1,4 @@
+if {state.currentTool >= 0}
+    G1 X{global.xcenter} Y{global.ycenter} F{global.speed_xy}
+else
+    M291 P"No tool currently selected" R"⚠️ Warning ⚠️" T5

@@ -1,2 +1,2 @@
-If Z is too far away, make Z offset value LARGER
-If Z is too close, make Z offset value SMALLER
+If Z is too far away (baby step negative), make Z offset value LARGER
+If Z is too close (baby step positive), make Z offset value SMALLER

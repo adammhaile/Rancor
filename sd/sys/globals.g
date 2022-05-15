@@ -1,16 +1,18 @@
 ;flags
 global allow_filament_sensor = false
+global disable_purge = false
 
 ;base values
 global offset_probe_x = -71.5
 global offset_probe_y = -20.6
-global offset_probe_z = 0
-global offset_bed = 0
+global offset_probe_z = 0.0
+global offset_bed = 0.0
 
 ;tool selection
 global cur_tool = "default"
 global t0tool = {global.cur_tool}
 global t1tool = {global.cur_tool}
+global bed = "default"
 
 ;filament selection
 
@@ -48,7 +50,7 @@ global t0_z=0
 global t0wipe_max = -10
 global t0wipe_min = -24
 
-global t0purge_amt = 12
+global t0purge_amt = 1
 global t0purge_speed = 300
 global t0retract_amt = 0
 global t0retract_speed = 2400
@@ -61,7 +63,7 @@ global t1_z=0
 global t1wipe_max = 408
 global t1wipe_min = 422
 
-global t1purge_amt = 12
+global t1purge_amt = 1
 global t1purge_speed = 300
 global t1retract_amt = 0
 global t1retract_speed = 2400

@@ -1,7 +1,6 @@
 var active = heat.heaters[tools[0].heaters[0]].active
 var current = heat.heaters[tools[0].heaters[0]].current
 var do_purge={var.active >= 170}
-set var.do_purge=false
 
 G90
 G53 G1 X{global.t0wipe_max} F{global.speed_xy}
@@ -10,7 +9,7 @@ G53 G1 X{global.t0wipe_max} F{global.speed_xy}
 if {var.current < var.active}
     M116 P0
 
-if {var.do_purge}
+if {var.do_purge && !global.disable_purge}
     G92 E0
     G1 E{global.t0purge_amt} F{global.t0purge_speed}
     G92 E0

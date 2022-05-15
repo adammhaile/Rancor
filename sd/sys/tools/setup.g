@@ -1,6 +1,7 @@
 ; run base tool configs to populate globals
 M98 P{"tools/" ^ global.t0tool ^ "/config.g"} S0
 M98 P{"tools/" ^ global.t1tool ^ "/config.g"} S1
+M98 P{"tools/bedoffsets.g"}
 
 ; setup T0 offsets
 var x0 = {global.offset_probe_x + global.t0_x}
