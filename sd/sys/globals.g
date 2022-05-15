@@ -55,6 +55,8 @@ global t0purge_speed = 300
 global t0retract_amt = 0
 global t0retract_speed = 2400
 
+global t0prime = "default"
+
 ;T1 params
 global t1_x=0
 global t1_y=0
@@ -67,3 +69,5 @@ global t1purge_amt = 1
 global t1purge_speed = 300
 global t1retract_amt = 0
 global t1retract_speed = 2400
+
+global t1prime = "default"

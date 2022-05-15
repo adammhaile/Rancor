@@ -122,6 +122,7 @@ M308 S10 Y"mcu-temp" A"MCU"                           ; defines sensor 10 as MCU
 ; set base tool names
 M98 P"tools/t0.g" 
 M98 P"tools/t1.g"
+M98 P"tools/bed.g"
 
 ; load variable tool configs
 M98 P"tools/setup.g"

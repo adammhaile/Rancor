@@ -1,0 +1,13 @@
+var t0 = "<b>T0: </b>"^{global.t0tool};^" > X"^{global.t0_x}^" Y"^{global.t0_y}^" Z"^{global.t0_z}
+var t1 = "<b>T1: </b>"^{global.t1tool};^" > X"^{global.t1_x}^" Y"^{global.t1_y}^" Z"^{global.t1_z}
+var bed = "<b>Bed: </b>"^{global.bed};^" > Z"^{global.offset_bed}
+
+var msg = {var.t0}^"<br>"^{var.t1}^"<br>"^{var.bed}
+M291 S2 P{var.msg} R"Loaded Tools/Bed" T20
+
+set var.t0 = "T0: X"^{global.t0_x}^" Y"^{global.t0_y}^" Z"^{global.t0_z}
+set var.t1 = "T1: X"^{global.t1_x}^" Y"^{global.t1_y}^" Z"^{global.t1_z}
+set var.bed = "Bed: Z"^{global.offset_bed}
+
+set var.msg = {var.t0}^"<br>"^{var.t1}^"<br>"^{var.bed}
+M291 S2 P{var.msg} R"Offsets" T20

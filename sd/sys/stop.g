@@ -5,5 +5,4 @@
 
 M800 F"complete"
 M98 P"complete.g"
-M98 P"full_park.g"
-;M98 P"present.g"
+M98 P"present.g"
