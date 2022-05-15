@@ -110,6 +110,7 @@ void begin_audio() {
 #endif
 }
 
+byte rand_count = 0;
 String getRandom(String base)
 {
   randomSeed(millis());
@@ -140,7 +141,10 @@ String getRandom(String base)
 
   if(count > 0)
   {
-    long val = random(count);
+    // random sucks on Arduino. This helps it from 
+    // repeating the same value 
+    long val = (random(count) + rand_count) % count;
+    rand_count++;
     String rand_name = base + "_" + String(val);
 
     String f_name = rand_name + ".mp3";
