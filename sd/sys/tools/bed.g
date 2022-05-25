@@ -1,1 +1,1 @@
-set global.bed = "fulament_textured"
+set global.bed = "fulament_smooth"
