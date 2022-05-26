@@ -22,9 +22,6 @@ M280 P1 S100
 ; Wait a moment for the CAN expansion boards to start
 G4 S2
 
-; speak greeting
-M800 F"greeting"
-
 ; Drives
 M569 P0.0 S0                                                ; Left Y
 M569 P0.1 S1                                                ; Left X
