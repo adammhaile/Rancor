@@ -1,2 +1,5 @@
 var file = "*" ^ {param.F}
-M118 P5 S{var.file}
+if {param.F} != "layer" || ({param.F} == "layer" && global.allow_layer_msg == true)
+    M118 P5 S{var.file}
+; elif {param.F} == "layer" && global.allow_layer_msg == true
+;     M118 P5 S{var.file}

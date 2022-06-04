@@ -1,0 +1,3 @@
+import lumix
+
+lumix.main()

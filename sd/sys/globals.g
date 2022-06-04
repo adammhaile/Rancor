@@ -1,6 +1,7 @@
 ;flags
 global allow_filament_sensor = false
-global disable_purge = false
+global disable_purge = true
+global allow_layer_msg = false
 
 ;base values
 global offset_probe_x = -71.5

@@ -1,0 +1,13 @@
+[Unit]
+Description=Duet API Listener for Timelapse Control
+After=duetcontrolserver.service
+Requires=duetcontrolserver.service
+
+[Service]
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/usr/local/bin/lumixlapse
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

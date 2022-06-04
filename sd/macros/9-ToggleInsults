@@ -1,0 +1,9 @@
+set global.allow_layer_msg = !global.allow_layer_msg
+
+var msg = "Insults have been "
+if global.allow_layer_msg:
+    set var.msg = var.msg ^ "Enabled"
+else
+    set var.msg = var.msg ^ "Disabled"
+    
+M291 S2 P{var.msg} R"Insult Toggle"
