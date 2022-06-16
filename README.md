@@ -29,3 +29,6 @@ Rancor is a project that came about from being inspired by seeing all the awesom
 - Ethernet connection for Duet SBC Pi for normal network connectivity
 - Teensy 3.2 managed "voice" output controlled via a Duet UART connection
 
+
+## FAQ
+
