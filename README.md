@@ -30,5 +30,3 @@ Rancor is a project that came about from being inspired by seeing all the awesom
 - Teensy 3.2 managed "voice" output controlled via a Duet UART connection
 
 
-## FAQ
-
