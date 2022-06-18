@@ -30,3 +30,6 @@ Rancor is a project that came about from being inspired by seeing all the awesom
 - Teensy 3.2 managed "voice" output controlled via a Duet UART connection
 
 
+## CAD
+
+All of the CAD for this project was done in Fusion 360 and the files (both F360 and STEP) can be found on [this release page](https://github.com/adammhaile/Rancor/releases/tag/cad_release).
