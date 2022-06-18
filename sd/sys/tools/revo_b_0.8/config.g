@@ -9,8 +9,8 @@ if {param.S} == 0
     set global.t0retract_speed = 2400
     set global.t0prime = "0.8"
 else
-    set global.t1_x = -0.6
-    set global.t1_y = 0.1
+    set global.t1_x = -0.75
+    set global.t1_y = 0.2
     set global.t1_z = 0.26
     set global.t1purge_amt = 6
     set global.t1purge_speed = 300
